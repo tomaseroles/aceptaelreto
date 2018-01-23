@@ -16,13 +16,16 @@ public class problema4 {
         System.out.println("Rayuela.");
         System.out.print("Numero de valores: ");
         int n = sc.nextInt();
-        System.out.println("El numero de caminos es: " + CaminosPosibles(n,0));
+        System.out.println("El numero de caminos es: " + CaminosPosibles(n));
     }
     
-    public static int CaminosPosibles(int max,int i) {
+    public static int CaminosPosibles(int valor) {
+        if (valor==0)
+            return 1;
+        else if (valor==1)
+            return 2;
+        else
+            return CaminosPosibles(valor-1)+CaminosPosibles(valor-2);
         
-        
-        
-        return i;
     }
 }
