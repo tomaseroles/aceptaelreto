@@ -13,7 +13,8 @@ import java.util.Scanner;
 public class starwars4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int x0, y0;
+        int x0=-1, y0=-1;
+        int xn=-1, yn=-1;
         do {
             System.out.println("Filas: ");
             int filas = sc.nextInt();
@@ -27,6 +28,10 @@ public class starwars4 {
                 for(int y=0;y<colum-1;y++){
                     //System.out.println(campo[x][y]);
                     campo[x][y]=linea.charAt(y);
+                    if(campo[x][y]=='F'){
+                        xn=x;
+                        yn=y;
+                    }
                     if(campo[x][y]=='S'){
                         x0=x;
                         y0=y;
@@ -34,7 +39,7 @@ public class starwars4 {
                 }
             }
             ImprimeMapa(campo);
-            if(hayCamino(campo,x0,y0))
+            if(hayCamino(campo,xn,yn))
                 System.out.print("SI");
             else
                 System.out.print("NO");
@@ -44,9 +49,25 @@ public class starwars4 {
     }
     
     public static boolean hayCamino(char[][] matriz, int i, int j) {
+        //determina si hay camino entre inicio (x0,y0) y final(xn,yn)
         boolean salida;
-        if(i==matriz.length-1){
+        
+        if(matriz[i][j]=='F')
+            return true;
+        else if(matriz[i][j]=='*')
+            return false;
             
+        
+        if(i>0){
+            if(i<matriz.length){
+                if(j<matriz[i].length)
+                    return hayCamino(matriz,i,j+1);
+                else
+                    return hayCamino(matriz,i,j-1);
+            } else {
+                if(j<matriz[i].length)
+                    return hayCamino(matriz)
+            }
         }
         return salida;
     }
