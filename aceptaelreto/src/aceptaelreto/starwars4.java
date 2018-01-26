@@ -50,12 +50,32 @@ public class starwars4 {
     
     public static boolean hayCamino(char[][] matriz, int i, int j) {
         //determina si hay camino entre inicio (x0,y0) y final(xn,yn)
-        boolean salida;
-        
-        if(matriz[i][j]=='F')
-            return true;
-        else if(matriz[i][j]=='*')
+        //cambiar el codigo para hacer las ifs al reves, para agrupar los pasos iguales
+        /* caminos
+         * m[][],i,j+1  si(
+         * m[][],i+1,j  si(i>=0 y i<max)
+         * m[][],i,j-1  
+         * m[][],i-1,j  si(i>0 y 
+         
+        if(matriz[i][j]=='*')
             return false;
+        else if(matriz[i][j]=='F')
+            return true;
+        else{
+            if (i==0){
+                if(j==0)
+                    return hayCamino(matriz,i,j+1);
+                else if(j==matriz[i].length)
+                    return hayCamino(matriz,i,j-1);
+                else
+                    return hayCamino(matriz,i,j+1);
+            } else if(i==matriz.length){
+                if(j==0)
+                    return hayCamino(matriz,i-1,j);
+                else
+                    return hayCamino(matriz,i-1,j);
+            }
+        }
             
         
         if(i>0){
@@ -66,10 +86,11 @@ public class starwars4 {
                     return hayCamino(matriz,i,j-1);
             } else {
                 if(j<matriz[i].length)
-                    return hayCamino(matriz)
+                    return hayCamino(matriz,1,1);
             }
         }
-        return salida;
+        */
+        return false;
     }
     
     public static void ImprimeMapa(char[][] mapa) {
