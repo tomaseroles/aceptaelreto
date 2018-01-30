@@ -28,10 +28,6 @@ public class starwars4 {
                 for(int y=0;y<colum-1;y++){
                     //System.out.println(campo[x][y]);
                     campo[x][y]=linea.charAt(y);
-                    if(campo[x][y]=='F'){
-                        xn=x;
-                        yn=y;
-                    }
                     if(campo[x][y]=='S'){
                         x0=x;
                         y0=y;
@@ -56,40 +52,26 @@ public class starwars4 {
          * m[][],i+1,j  si(i>=0 y i<max)
          * m[][],i,j-1  
          * m[][],i-1,j  si(i>0 y 
-         
-        if(matriz[i][j]=='*')
+        */ 
+        if(i<0 || j<0 || i>matriz.length || j>matriz[i].length || matriz[i][j]=='*')
             return false;
         else if(matriz[i][j]=='F')
             return true;
         else{
-            if (i==0){
-                if(j==0)
-                    return hayCamino(matriz,i,j+1);
-                else if(j==matriz[i].length)
-                    return hayCamino(matriz,i,j-1);
-                else
-                    return hayCamino(matriz,i,j+1);
-            } else if(i==matriz.length){
-                if(j==0)
-                    return hayCamino(matriz,i-1,j);
-                else
-                    return hayCamino(matriz,i-1,j);
+            if(matriz[i][j]=='.'){
+                matriz[i][j]='*';
+                if(hayCamino(matriz,i,j+1))
+                    return true;
+                if(hayCamino(matriz,i,j-1))
+                    return true;
+                if(hayCamino(matriz,i+1,j))
+                    return true;
+                if(hayCamino(matriz,i-1,j))
+                    return true;
             }
-        }
             
-        
-        if(i>0){
-            if(i<matriz.length){
-                if(j<matriz[i].length)
-                    return hayCamino(matriz,i,j+1);
-                else
-                    return hayCamino(matriz,i,j-1);
-            } else {
-                if(j<matriz[i].length)
-                    return hayCamino(matriz,1,1);
-            }
         }
-        */
+        
         return false;
     }
     
