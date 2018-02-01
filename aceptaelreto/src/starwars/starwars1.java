@@ -1,4 +1,4 @@
-package aceptaelreto;
+package starwars;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
