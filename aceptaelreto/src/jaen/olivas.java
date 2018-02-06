@@ -23,30 +23,33 @@ public class olivas {
 
             for(int i=0;i<filas;i++)
                 campo[i]=sc.nextLine().toCharArray();
-            MostrarCampo(campo);
-            
+            //MostrarCampo(campo);
+            System.out.println(Zonas(campo,0,0,maximo));
             
         } while(sc.hasNext());
     }
         
     private static int Zonas(char[][] m,int i,int j, int z){
-        if(m[i][j]=='*')
-            return 0;
-        if(m[i][j]==' '){       // se ha encontrado una zona en blanco: 
-            return 0;
-        }
+        int salida=0;
         if(m[i][j]=='#'){        // se ha encontrado un campo. hay que mirar alrededor si tambien hay campos
-            if(m[i][j+1]=='#'){
+            if(m[i][j+1]=='#' && i>=0 && i<=m.length && j+1>=0 && j+1<=m[i].length){
                 m[i][j+1]='*';
-                return z+Zonas(m,i,j+1,z);
+                salida = z+Zonas(m,i,j+1,z);
             }
-            if(m[i][j-1]=='#')
-                return z+Zonas(m,i,j-1,z);
-            if(m[i+1][j]=='#')
-                return z+Zonas(m,i+1,j,z);
-            if(m[i-1][j]=='#')
+            if(m[i][j-1]=='#' && i>=0 && i<=m.length && j-1>=0 && j-1<=m[i].length) {
+                m[i][j-1]='*';
+                salida = z+Zonas(m,i,j-1,z);
+            }
+            if(m[i+1][j]=='#' && i+1>=0 && i+1<=m.length && j>=0 && j<=m[i].length) {
+                m[i+1][j]='*';
+                salida = z+Zonas(m,i+1,j,z);
+            }
+            if(m[i-1][j]=='#' && i-1>=0 && i-1<=m.length && j>=0 && j<=m[i].length) {
+                salida = m[i-1][j]='*';
                 return z+Zonas(m,i-1,j,z);
+            }
         }
+        return salida;
     }
     
     private static void MostrarCampo(char[][] m){
