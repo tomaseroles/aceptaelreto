@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="aceptaelreto/src"/>
-	<classpathentry kind="src" path="JavaApplication1/src"/>
 	<classpathentry kind="src" path="tema5/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
